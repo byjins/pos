@@ -9,9 +9,12 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
-    "express": "^4.21.0"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "ts-node": "^10.9.2"
   },
   "scripts": {
-    "dev": "yarn nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts"
+    "dev": "nodemon --signal SIGKILL --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts"
   }
 }
