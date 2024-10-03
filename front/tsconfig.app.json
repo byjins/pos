@@ -7,7 +7,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -26,7 +26,8 @@
       "@page/*": ["page/*"],
       "@store/*": ["store/*"],
       "@type/*": ["type/*"],
-    }
+      "@context/*": ["context/*"]
+    },
   },
   "include": ["src/**/*"]
 }
