@@ -8,19 +8,22 @@ import AuthProvider from "@components/Auth/AuthProvider.tsx";
 import Error from "@page/Error.tsx";
 import Home from "@page/Home.tsx";
 import Login from "@page/Login";
+import { ThemeAndLanguageProvider } from "./context/SettingContext.tsx";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/user" replace />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Error />} />
-        <Route element={<AuthProvider />}>
-          <Route path={"/user"} element={<Home />} />
-        </Route>
-      </Routes>
-    </Router>
+    <ThemeAndLanguageProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Login />} />
+          <Route path="*" element={<Error />} />
+          <Route element={<AuthProvider />}>
+            <Route path={"/user"} element={<Home />} />
+          </Route>
+        </Routes>
+      </Router>
+    </ThemeAndLanguageProvider>
   );
 }
 
