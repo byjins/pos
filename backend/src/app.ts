@@ -2,15 +2,16 @@ import express from 'express';
 import productRouter from "./router/productRouter"
 import userRouter from "./router/userRouter"
 import dbConnection from "./config/dbConfig";
+import {AuthenticationFilter} from "./util/jwtUtils";
 
 const app = express();
 
 dbConnection.then(() => {
-    // 미들웨어
-    app.use(express.json()); // post body 값 파싱
+    /* MiddleWear */
+    app.use(express.json());
 
-    // router
-    app.use("/user", userRouter)     // user Router
+    /* Router */
+    app.use("/user", userRouter) // user Router
     app.use("/product", productRouter) // product Router
 
     app.listen(8080, () => {

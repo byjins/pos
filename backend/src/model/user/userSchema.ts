@@ -23,6 +23,11 @@ const UserSchema = new mongoose.Schema({
   phone: {
     type: String,
     required: true,
+    unique: true,
+  },
+  role: {
+    type: String,
+    required: true,
   }
 });
 export const User = mongoose.model("User", UserSchema);
