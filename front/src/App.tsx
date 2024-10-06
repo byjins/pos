@@ -6,8 +6,7 @@ import {
 } from "react-router-dom";
 import AuthProvider from "@components/Auth/AuthProvider.tsx";
 import Error from "@page/Error.tsx";
-import Home from "@page/Home.tsx";
-import Login from "@page/Login";
+import Home from "@page/Home";
 import { ThemeAndLanguageProvider } from "./context/SettingContext.tsx";
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="*" element={<Error />} />
           <Route element={<AuthProvider />}>
             <Route path={"/user"} element={<Home />} />
