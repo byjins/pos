@@ -6,7 +6,7 @@ dotenv.config();
 const DB_URI = process.env.MONGODB_URI;
 
 if (!DB_URI) {
-  throw new Error("환경 변수 오류");
+  throw new Error("DB URL 오류!");
 }
 
 const dbConnection = mongoose

@@ -1,16 +1,16 @@
 import {NextFunction, Request, Response} from "express";
-import jwt, {JwtPayload} from "jsonwebtoken";
+import jwt, {JwtPayload, verify} from "jsonwebtoken";
 import dotenv from "dotenv";
 import {Token} from "../model/token/tokenSchema";
 
-interface TokenPayload extends JwtPayload {
+export interface TokenPayload extends JwtPayload {
   id: string;
   role: string;
 }
 
 interface RefreshTokenVerifyResponse {
   use: boolean,
-  token: string,
+  token: string | string[],
   message: string;
 }
 
@@ -47,7 +47,7 @@ export const AccessTokenVerify = (token: string) => {
 
 
 /* RefreshToken 검증 */
-export const RefreshTokenVerify = async (token: string, id: string): Promise<RefreshTokenVerifyResponse> => {
+export const RefreshTokenVerify = async (token: string | string[], id: string): Promise<RefreshTokenVerifyResponse> => {
   const getToken = await Token.findOne({id: id});
   if(getToken) {
     if(token == getToken.refreshToken) {

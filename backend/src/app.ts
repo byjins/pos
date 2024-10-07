@@ -2,7 +2,6 @@ import express from 'express';
 import productRouter from "./router/productRouter"
 import userRouter from "./router/userRouter"
 import dbConnection from "./config/dbConfig";
-import {AuthenticationFilter} from "./util/jwtUtils";
 
 const app = express();
 
