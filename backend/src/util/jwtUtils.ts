@@ -18,7 +18,7 @@ dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 /*.AccessToken 생성 */
-export const GeneratorAccessToken = (id: string, role: string):String => {
+export const GeneratorAccessToken = (id: string, role: string):string => {
   const payload = {id: id, role: role};
   return "Bearer " + jwt.sign(payload, SECRET_KEY!, {
     algorithm: 'HS256',
@@ -27,7 +27,7 @@ export const GeneratorAccessToken = (id: string, role: string):String => {
 }
 
 /*.RefreshToken 생성 */
-export const GeneratorRefreshToken = (id: string, role: string):String => {
+export const GeneratorRefreshToken = (id: string, role: string):string => {
   const payload = {id: id, role: role};
   return jwt.sign(payload, SECRET_KEY!, {
     algorithm: 'HS256',
