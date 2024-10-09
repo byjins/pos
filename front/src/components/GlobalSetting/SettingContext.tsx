@@ -1,11 +1,7 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useState,
-  useEffect,
-} from "react";
-import i18n from "locales/i18n";
+import { createContext, ReactNode, useContext, useEffect } from "react";
+import i18n from "../../locales/i18n.ts";
+import useLocalStorage from "../../hooks/useLocalStorage.ts";
+
 type Theme = "light" | "dark";
 type Language = "en" | "ko";
 
@@ -20,20 +16,20 @@ const ThemeAndLanguageContext = createContext<ContextType | undefined>(
   undefined,
 );
 
-export const ThemeAndLanguageProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [language, setLanguage] = useState<Language>("ko");
+export const useThemeAndLanguage = () => {
+  return useContext(ThemeAndLanguageContext)!;
+};
+
+const ThemeAndLanguageProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [language, setLanguage] = useLocalStorage("i18n", "ko");
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   const switchLanguage = () => {
-    setLanguage((prevLang) => (prevLang === "ko" ? "en" : "ko"));
+    setLanguage(language === "ko" ? "en" : "ko");
   };
 
   useEffect(() => {
@@ -57,6 +53,4 @@ export const ThemeAndLanguageProvider = ({
   );
 };
 
-export const useThemeAndLanguage = () => {
-  return useContext(ThemeAndLanguageContext)!;
-};
+export default ThemeAndLanguageProvider;

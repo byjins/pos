@@ -45,22 +45,6 @@ export const SignInContainer = styled.div<{ $signinIn: boolean }>`
   ${(props) => (!props.$signinIn ? `transform: translateX(100%);` : null)}
 `;
 
-export const Form = styled.form`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-  gap: 0.5rem;
-`;
-
-export const Title = styled.h1`
-  font-weight: bold;
-  margin: 0;
-`;
-
 export const Button = styled.button`
   border-radius: 20px;
   border: 1px solid #ff4b2b;

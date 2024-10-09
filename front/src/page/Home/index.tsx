@@ -9,10 +9,11 @@ import {
   RightOverlayPanel,
   SignInContainer,
   SignUpContainer,
-} from "@page/Home/Components.ts";
+} from "./styles.ts";
 import Input from "@components/Input.tsx";
 import Button from "@components/Button.tsx";
-import Theme from "@components/Setting/Theme.tsx";
+import Theme from "@components/GlobalSetting/Theme.tsx";
+import Translation from "@components/GlobalSetting/Translation.tsx";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -43,14 +44,16 @@ const Home = () => {
                 "flex flex-col items-center justify-center p-12 h-full gap-2 bg-white dark:bg-gray-700"
               }
             >
-              <div className={"absolute top-5 right-5"}>
+              <div className={"absolute flex items-center gap-3 top-5 right-5"}>
                 <Theme />
+                <Translation />
               </div>
               <h1 className={"text-2xl font-bold dark:text-white"}>
                 {t("Create Account")}
               </h1>
               <Input type="text" name={"userName"} placeholder="Name" />
               <Input type="email" name={"userEmail"} placeholder="Email" />
+              <Input type="phone" name={"userPhone"} placeholder="Phone" />
               <Input
                 type="password"
                 name={"userPassword"}
@@ -71,8 +74,9 @@ const Home = () => {
                 "flex flex-col items-center justify-center p-12 h-full gap-2 bg-white dark:bg-gray-700"
               }
             >
-              <div className={"absolute top-5 right-5"}>
+              <div className={"absolute flex items-center gap-3 top-5 right-5"}>
                 <Theme />
+                <Translation />
               </div>
               <h1 className={"text-2xl font-bold dark:text-white"}>
                 {t("Sign in")}
