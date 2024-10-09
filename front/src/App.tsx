@@ -7,7 +7,7 @@ import {
 import AuthProvider from "@components/Auth/AuthProvider.tsx";
 import Error from "@page/Error.tsx";
 import Home from "@page/Home";
-import { ThemeAndLanguageProvider } from "./context/SettingContext.tsx";
+import ThemeAndLanguageProvider from "@components/GlobalSetting/SettingContext.tsx";
 
 function App() {
   return (

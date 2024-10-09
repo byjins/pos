@@ -1,4 +1,4 @@
-import { useThemeAndLanguage } from "@context/SettingContext.tsx";
+import { useThemeAndLanguage } from "@components/GlobalSetting/SettingContext.tsx";
 import styled from "styled-components";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
