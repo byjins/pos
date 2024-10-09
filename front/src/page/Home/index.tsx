@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import {FormEvent, useState} from "react";
 import { useTranslation } from "react-i18next";
 import {
   Container,
@@ -13,10 +13,20 @@ import {
 import Input from "@components/Input.tsx";
 import Button from "@components/Button.tsx";
 import Theme from "@components/Setting/Theme.tsx";
+import {Controller, useForm} from "react-hook-form";
+
+interface RegisterParams {
+  userName: string,
+  userPassword: string,
+  userEmail: string,
+  passwordConfirm: string,
+  userPhone: string,
+}
 
 const Home = () => {
   const { t } = useTranslation();
   const [signIn, toggle] = useState(true);
+  const {control, handleSubmit} = useForm<RegisterParams>();
 
   // 로그인
   const handleSignInSubmit = (event: FormEvent) => {
@@ -26,7 +36,12 @@ const Home = () => {
   };
 
   // 회원가입
-  const handleSignUpSubmit = (event: FormEvent) => {
+  const handleSignUpSubmit = (data: RegisterParams) => {
+    console.log(data);
+  }
+
+  // 아이디 중복확인
+  const handleIdDuplicateCheck = (event: FormEvent) => {
     event.preventDefault(); // 기본 동작인 페이지 새로고침 방지
     console.log("Form submitted! Button clicked!");
     // 버튼 클릭 시 동작할 코드
@@ -38,7 +53,7 @@ const Home = () => {
         <Container>
           <SignUpContainer $signinIn={signIn} className={""}>
             <form
-              onSubmit={handleSignUpSubmit}
+              onSubmit={handleSubmit(handleSignUpSubmit)}
               className={
                 "flex flex-col items-center justify-center p-12 h-full gap-2 bg-white dark:bg-gray-700"
               }
@@ -49,19 +64,131 @@ const Home = () => {
               <h1 className={"text-2xl font-bold dark:text-white"}>
                 {t("Create Account")}
               </h1>
-              <Input type="text" name={"userName"} placeholder="Name" />
-              <Input type="email" name={"userEmail"} placeholder="Email" />
-              <Input
-                type="password"
+              <div className="flex w-full gap-2">
+                <div className={"flex-grow-[7]"}>
+                  <Controller
+                    name={"userName"}
+                    control={control}
+                    defaultValue={''}
+                    rules={{
+                      required: t("ID is required"),
+                      minLength: 8,
+                      maxLength: 16,
+                      pattern: {
+                        value: /^[a-z0-9]{8,16}$/,
+                        message: t("Only lowercase letters and numbers are allowed, and it must be between 8 and 16 characters"),
+                      }
+                    }}
+                    render={({ field, fieldState }) => (
+                      <div className={"flex flex-col gap-2"}>
+                        <Input
+                          type="text"
+                          onChange={field.onChange}
+                          value={field.value}
+                          name={field.name}
+                          placeholder={t("Placeholder Name")}
+                          className={"w-full"}
+                        />
+                        {fieldState.error != null ?
+                          <span style={{color: 'red'}}>{fieldState.error?.message}</span> :
+                          <span style={{color: 'red'}}></span>}
+                      </div>
+                    )}
+                  />
+                </div>
+                <div className={"flex-grow-[3]"}>
+                  <Button className={"items-center"} onClick={handleIdDuplicateCheck}>{t("Duplicate Check")}</Button>
+                </div>
+              </div>
+              <Controller
+                name={"userEmail"}
+                control={control}
+                defaultValue={''}
+                rules={{
+                  required: t("Email is required"),
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: t("Please enter a valid email address"),
+                  }
+                }}
+                render={({ field, fieldState }) => (
+                  <div className={"flex flex-col w-full gap-2"}>
+                    <Input type="text" onChange={field.onChange} value={field.value} name={field.name}
+                           placeholder={t("Placeholder Email")} className={"w-full"}/>
+                    {fieldState.error != null ?
+                      <span style={{color: 'red'}}>{fieldState.error?.message}</span> :
+                      <span style={{color: 'red'}}></span>}
+                  </div>
+                )}
+              />
+              <Controller
                 name={"userPassword"}
-                placeholder="Password"
+                control={control}
+                defaultValue={''}
+                rules={{
+                  required: t("Password is required"),
+                  minLength: 8,
+                  maxLength: 20,
+                  pattern: {
+                    value: /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/,
+                    message: t("Password must contain at least one special character and be between 8 and 20 characters long"),
+                  }
+                }}
+                render={({ field, fieldState }) => (
+                  <div className={"flex flex-col w-full gap-2"}>
+                    <Input type="password" onChange={field.onChange} value={field.value} name={field.name}
+                           placeholder={t("Placeholder Password")} className={"w-full"}/>
+                    {fieldState.error != null ?
+                      <span style={{color: 'red'}}>{fieldState.error?.message}</span> :
+                      <span style={{color: 'red'}}></span>}
+                  </div>
+                )}
               />
-              <Input
-                type="password"
+              <Controller
                 name={"passwordConfirm"}
-                placeholder="Password"
+                control={control}
+                defaultValue={''}
+                rules={{
+                  required: t("Password Confirm is required"),
+                  minLength: 8,
+                  maxLength: 20,
+                  pattern: {
+                    value: /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,20}$/,
+                    message: t("Password must contain at least one special character and be between 8 and 20 characters long"),
+                  }
+                }}
+                render={({ field, fieldState }) => (
+                  <div className={"flex flex-col w-full gap-2"}>
+                    <Input type="password" onChange={field.onChange} value={field.value} name={field.name}
+                           placeholder={t("Placeholder Password Confirm")} className={"w-full"}/>
+                    {fieldState.error != null ?
+                      <span style={{color: 'red'}}>{fieldState.error?.message}</span> :
+                      <span style={{color: 'red'}}></span>}
+                  </div>
+                )}
               />
-              <Button>{t("Sign up")}</Button>
+              <Controller
+                name={"userPhone"}
+                control={control}
+                defaultValue={''}
+                rules={{
+                  required: t("Phone is required"),
+                  pattern: {
+                    value: /^\d{3}-\d{4}-\d{4}$/,
+                    message: t("Phone number must be in the format 000-0000-0000"),
+                  }
+                }}
+                render={({ field, fieldState }) => (
+                  <div className={"flex flex-col w-full gap-2"}>
+                    <Input type="phone" onChange={field.onChange} value={field.value} name={field.name}
+                           placeholder={t("Placeholder Phone")} className={"w-full"}/>
+                    {fieldState.error != null ?
+                      <span style={{color: 'red'}}>{fieldState.error?.message}</span> :
+                      <span style={{color: 'red'}}></span>}
+                  </div>
+                )}
+              />
+              <Button type={"submit"}>{t("Sign up")}</Button>
             </form>
           </SignUpContainer>
           <SignInContainer $signinIn={signIn}>

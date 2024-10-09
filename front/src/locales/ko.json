@@ -7,5 +7,20 @@
   "Forgot your password?": "비밀번호를 잊으셨나요?",
   "POS (Personalized, Optimized, Simplified): A system designed to meet users' needs, provide convenient usage, and offer a streamlined experience.": "사용자의 필요에 맞는, 편리하게 사용할 수 있는, 간결화된  POS(Personalized, Optimized, Simplified)",
   "Have the best experience at My POS.":"마이 포스에서 최고의 경험을 하세요.",
-  "You can use a POS with a user-customized UI and features.": "사용자 맞춤 UI와 기능이 있는 POS를 사용할 수 있습니다."
+  "You can use a POS with a user-customized UI and features.": "사용자 맞춤 UI와 기능이 있는 POS를 사용할 수 있습니다.",
+  "Placeholder Name": "아이디",
+  "Placeholder Email": "이메일",
+  "Placeholder Password": "비밀번호",
+  "Placeholder Password Confirm": "비밀번호 확인",
+  "Placeholder Phone": "전화번호",
+  "Duplicate Check": "중복 확인",
+  "Only lowercase letters and numbers are allowed, and it must be between 8 and 16 characters": "영소문자와 숫자를 포함하여 8자 이상 16자 이하로 작성해야합니다.",
+  "Please enter a valid email address": "유효한 이메일 주소를 입력하세요.",
+  "Password must contain at least one special character and be between 8 and 20 characters long": "비밀번호는 특수문자를 최소 1개 포함해야 하며, 8~20자 사이여야 합니다.",
+  "Phone number must be in the format 000-0000-0000": "전화번호는 000-0000-0000 형식이어야 합니다.",
+  "ID is required": "아이디는 필수로 입력해야 합니다.",
+  "Password is required": "비밀번호는 필수로 입력해야 합니다.",
+  "Password Confirm is required": "비밀번호 확인은 필수로 입력해야 합니다.",
+  "Email is required": "이메일은 필수로 입력해야 합니다.",
+  "Phone is required": "전화번호는 필수로 입력해야 합니다."
 }

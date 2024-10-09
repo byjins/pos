@@ -7,4 +7,20 @@
   "Forgot your password?": "Forgot your password?",
   "POS (Personalized, Optimized, Simplified): A system designed to meet users' needs, provide convenient usage, and offer a streamlined experience.": "POS (Personalized, Optimized, Simplified): A system designed to meet users' needs, provide convenient usage, and offer a streamlined experience.",
   "Have the best experience at My POS.":"Have the best experience at My POS.",
-  "You can use a POS with a user-customized UI and features.": "You can use a POS with a user-customized UI and features."}
+  "You can use a POS with a user-customized UI and features.": "You can use a POS with a user-customized UI and features.",
+  "Placeholder Name": "Name",
+  "Placeholder Email": "Email",
+  "Placeholder Password": "Password",
+  "Placeholder Password Confirm": "Password Confirm",
+  "Placeholder Phone": "Phone",
+  "Duplicate Check": "Duplicate Check",
+  "Only lowercase letters and numbers are allowed, and it must be between 8 and 16 characters.": "Only lowercase letters and numbers are allowed, and it must be between 8 and 16 characters.",
+  "Please enter a valid email address": "Please enter a valid email address.",
+  "Password must contain at least one special character and be between 8 and 20 characters long": "Password must contain at least one special character and be between 8 and 20 characters long.",
+  "Phone number must be in the format 000-0000-0000": "Phone number must be in the format 000-0000-0000",
+  "ID is required": "ID is required",
+  "Email is required": "Email is required.",
+  "Password is required": "Password is required",
+  "Password Confirm is required": "Password Confirm is required",
+  "Phone is required": "Phone is required"
+}
