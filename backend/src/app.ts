@@ -1,16 +1,25 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
+import productRouter from "./router/productRouter"
+import userRouter from "./router/userRouter"
+import dbConnection from "./config/dbConfig";
 
 const app = express();
 
+dbConnection.then(() => {
+    /* MiddleWear */
+    app.use(express.json());
 
-app.get('/welcome', (req: Request, res: Response, next: NextFunction) => {
-    res.send('welcome!');
-});
+    /* Router */
+    app.use("/user", userRouter) // user Router
+    app.use("/product", productRouter) // product Router
 
-app.listen('8080', () => {
-    console.log(`
-  ################################################
-  🛡️  Server listening on port: 8080🛡️
-  ################################################
-`);
+    app.listen(8080, () => {
+        console.log(`
+            ################################################
+            🛡️ Server listening on port: 8080 🛡️
+            ################################################
+        `);
+    });
+}).catch(err => {
+    console.error("Failed to connect to the database. Server not started.", err);
 });
